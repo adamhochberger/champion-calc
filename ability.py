@@ -1,11 +1,38 @@
-#!/usr/local/bin/env python
+#!/usr/local/bin python
+import json
+from component import Component
+from values import Damage_Heal, Buff_Debuff
+
 class Ability:
     'Base class for the ability container'
 
-    def __init__(self, name, description, component_list):
-      self.name = name
-      self.description = description
-      self.component_list = component_list
+    def __init__(self, name, description, rank, max_rank, components):
+        self.values = {"name": name, "description": description, "rank": rank, "max_rank": rank, "components": components}
+
+    def print_ability(self):
+        print(json.dumps(self.values, sort_keys=False, indent=4))
+    
+    '''
+    def print_at_rank(self, value):
+        if value > 0 and value < self.max_rank:
+            for item in self.components:
+                item.print_comp_at_rank()     
+                '''     
+
+
+def main():
+    cost = Component(28, 3).values
+    cd = Component(5.5, -0.25).values
+    base_dmg = Component(15, 25).values
+    ad = Component(110, 0).values
+    ap = Component(30, 0).values
+
+    dmg = Damage_Heal("Physical", base_dmg, ad, ap).values
+    a1 = Ability("Mystic Shot", "filler", 1, 5, {"cost": cost, "cd": cd, "dmg": dmg})
+    a1.print_ability()
+
+if __name__== "__main__":
+    main()
 
     """
     Using example
@@ -13,10 +40,10 @@ class Ability:
     At max it would have
     Cost (mana, 28, 3)
     Cooldown (cooldown, 5.5, -0.25)
-    Damage
-        Flat (dmg_flat, 15, 25)
-        AD % (ad_percent, 110, 0)
-        AP % (ap_percent, 30, 0)
+    Damage (base_dmg, ad_%, ap_%)
+        base_dmg = Component(dmg_flat, 15, 25)
+        ad_% = (ad_percent, 110, 0)
+        ap_% = (ap_percent, 30, 0)
 
     Ability("Mystic Shot", "filler text", [Cost, Cooldown, Damage]
     For Ezreal W: Essence Flux
