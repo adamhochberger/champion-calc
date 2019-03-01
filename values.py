@@ -1,13 +1,33 @@
 #!/usr/local/bin/env python
 
-class damage_heal:
-    'Damage/heal object for the ability container'
+class Damage_Heal:
+    '''
+    Damage/heal object for the ability container
+    Has components for base damage, ad%, ap%, hp%
+    '''
 
-    def __init__ (self, base, ad_percent, ap_percent, hp_percent):
-        self.base = base
-        self.ad_percent = ad_percent
-        self.ap_percent = ap_percent
-        self.hp_percent = hp_percent
+    def __init__ (self, kind, base={}, ad_percent={}, ap_percent={}, hp_percent={}):
+        self.values = {"kind": kind, "base": base, "ad_%": ad_percent, "ap_%": ap_percent, "hp_%": hp_percent}
+
+    def print_comp(self):
+        print(str(self.values))
+    
+    def print_comp_at_rank(self, rank):
+        for item in self.values:
+            print(item, end=' ')
+            print(item.value)
+
+class Buff_Debuff:
+    'Buff/debuff object for the ability container'
+
+    def __init__ (self, kind, flat, percent):
+        self.kind = kind
+        self.flat = flat
+        self.percent = percent
+    
+    def print_comp(self, comp_list):
+        for item in comp_list:
+            item.print_comp()
 
 class Flat:
     'Flat object for the object container'
