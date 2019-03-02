@@ -1,0 +1,15 @@
+{
+	"version": "0.1.0",
+	
+	// The Python command
+	"command": "python",
+
+	// Show the output window only if unrecognized errors occur. 
+	"showOutput": "always",
+	
+	// args is the HelloWorld program to compile.
+    "args": [
+        "${file}"
+    ],
+    "problemMatchers": []
+}
