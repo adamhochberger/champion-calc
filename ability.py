@@ -1,13 +1,48 @@
 #!/usr/local/bin python
 import json
-from component import Component
-from values import Damage_Heal, Buff_Debuff
 
 class Ability:
     'Base class for the ability container'
+    ''' Structure for ability is of this form (subject to change based on components)
+    {
+        "name": "Mystic Shot",
+        "description": "filler",
+        "rank": 1,
+        "max_rank": 1,
+        "components": {
+        "cost": {
+            "value": 28,
+            "scale": 3
+        },
+        "cd": {
+            "value": 5.5,
+            "scale": -0.25
+        },
+        "dmg": {
+            "kind": "Physical",
+            "base": {
+                "value": 15,
+                "scale": 25
+            },
+            "ad_%": {
+                "value": 110,
+                "scale": 0
+            },
+            "ap_%": {
+                "value": 30,
+                "scale": 0
+            },
+            "hp_%": {}
+        }
+    }
+}
 
+    
+    '''
     def __init__(self, name, description, rank, max_rank, components):
         self.values = {"name": name, "description": description, "rank": rank, "max_rank": rank, "components": components}
+    
+
 
     def print_ability(self):
         print(json.dumps(self.values, sort_keys=False, indent=4))
@@ -19,21 +54,6 @@ class Ability:
                 item.print_comp_at_rank()     
                 '''     
 
-
-def main():
-    cost = Component(28, 3).values
-    cd = Component(5.5, -0.25).values
-    base_dmg = Component(15, 25).values
-    ad = Component(110, 0).values
-    ap = Component(30, 0).values
-
-    dmg = Damage_Heal("Physical", base_dmg, ad, ap).values
-    a1 = Ability("Mystic Shot", "filler", 1, 5, {"cost": cost, "cd": cd, "dmg": dmg})
-    a1.print_ability()
-
-if __name__== "__main__":
-    main()
-
     """
     Using example
     For Ezreal Q: Mystic Shot
@@ -42,16 +62,9 @@ if __name__== "__main__":
     Cooldown (cooldown, 5.5, -0.25)
     Damage (base_dmg, ad_%, ap_%)
         base_dmg = Component(dmg_flat, 15, 25)
-        ad_% = (ad_percent, 110, 0)
-        ap_% = (ap_percent, 30, 0)
+        ad_% = Component(ad_percent, 110, 0)
+        ap_% = Component(ap_percent, 30, 0)
 
     Ability("Mystic Shot", "filler text", [Cost, Cooldown, Damage]
-    For Ezreal W: Essence Flux
-    Cost
-    Cooldown
-    Damage
-        Flat (dmg_flat, 80, 55)
-        AD % (bonus_ad_percent, 60, 0)
-        AP % (ap_percent, 70, 5)
     """
       
