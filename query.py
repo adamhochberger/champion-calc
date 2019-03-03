@@ -13,8 +13,17 @@ r = requests.get("http://ddragon.leagueoflegends.com/cdn/" + recentVersion + "/d
 data = json.loads(r.text)
 
 # Test statement to verify that champion names are being pulled properly
-for key in list(data["data"]):
-    print(key)
+#for key in list(data["data"]):
+champ = requests.get("http://ddragon.leagueoflegends.com/cdn/" + recentVersion + "/data/en_US/champion/" + "Azir" + ".json")
+
+# print(json.dumps(json.loads(champ.text), indent=2))
+
+for entry in list(data["data"]):
+    champ = requests.get("http://ddragon.leagueoflegends.com/cdn/" + recentVersion + "/data/en_US/champion/" + entry + ".json")
+    print(entry)
+    print(json.loads(champ.text)["data"][entry]["spells"][0]["name"])
+    print()
+
 
 # Names of all champions can be pulled using 
 # data = json.loads(r.text) 
