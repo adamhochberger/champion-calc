@@ -1,7 +1,9 @@
 #!/usr/local/bin/env python
 class Component:
     '''Base class for the parts of an item or ability
+        
         Uses base dict structure to replicate pieces of an ability that are combined in the damage_heal class
+        
         TODO: Further test print_comp_at_rank()
     '''
 
