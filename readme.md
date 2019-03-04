@@ -2,7 +2,6 @@
 
 ## by Adam Hochberger
 
-
 This calculator will implement different class structures to fully model champions and will be continually modified to equate more complex structures.
 
 The class structure will first be implemented using components to model individual attributes of abilities, creating a modular approach to adding to champion designs.

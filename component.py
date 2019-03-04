@@ -14,7 +14,7 @@ class Component:
         print(self.values["value"], end=' ')
         print(self.values["scaling_value"])
 
-    def print_comp_at_rank(self, rank):
-        print(self.values["value"] + rank*self.values["scaling_value"])
+    def comp_at_rank(self, rank):
+        return (self.values["value"] + rank * self.values["scale"])
         
       
