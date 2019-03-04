@@ -1,4 +1,2 @@
-__pycache__/values.cpython-37.pyc
-.pytest_cache/v/cache/nodeids
-.pytest_cache/v/cache/stepwise
-__pycache__/component.cpython-37.pyc
+__pycache__/
+.pytest_cache/
