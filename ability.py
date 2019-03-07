@@ -35,7 +35,7 @@ class Ability:
     
     '''
     def __init__(self, name, description, rank, max_rank, components):
-        self.values = {"name": name, "description": description, "rank": rank, "max_rank": rank, "components": components}
+        self.values = {"name": name, "description": description, "rank": rank, "max_rank": max_rank, "components": components}
     
 
 

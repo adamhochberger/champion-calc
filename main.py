@@ -7,11 +7,11 @@ def main():
      Main Test function that will be used to debug (reduce clutter in ability since that will be a smaller scope)
     '''
 
-    cost = Component(28, 3).values
-    cd = Component(5.5, -0.25).values
-    base_dmg = Component(15, 25).values
-    ad = Component(110, 0).values
-    ap = Component(30, 0).values
+    cost = Component([28, 31, 34, 37, 40]).values
+    cd = Component([5.5, 5.25, 5.0, 4.75, 4.5]).values
+    base_dmg = Component([15, 40, 65, 90, 115]).values
+    ad = Component([110, 110, 110, 110, 110]).values
+    ap = Component([30, 30, 30, 30, 30]).values
 
     dmg = Damage_Heal("Physical", base_dmg, ad, ap).values
     a1 = Ability("Mystic Shot", "filler", 1, 5, {"cost": cost, "cd": cd, "dmg": dmg})
