@@ -35,12 +35,12 @@ class Ability:
     
     '''
     def __init__(self, name, description, rank, max_rank, components):
-        self.values = {"name": name, "description": description, "rank": rank, "max_rank": max_rank, "components": components}
+        self.scaling = {"name": name, "description": description, "rank": rank, "max_rank": max_rank, "components": components}
     
 
 
     def print_ability(self):
-        print(json.dumps(self.values, sort_keys=False, indent=4))
+        print(json.dumps(self.scaling, sort_keys=False, indent=4))
     
     '''
     def print_at_rank(self, value):
@@ -53,12 +53,12 @@ class Ability:
     Using example
     For Ezreal Q: Mystic Shot
     At max it would have
-    Cost (mana, 28, 3)
-    Cooldown (cooldown, 5.5, -0.25)
+    Cost ([mana_array])
+    Cooldown ([cd_array])
     Damage (base_dmg, ad_%, ap_%)
-        base_dmg = Component(dmg_flat, 15, 25)
-        ad_% = Component(ad_percent, 110, 0)
-        ap_% = Component(ap_percent, 30, 0)
+        base_dmg = Component([dmg_array])
+        ad_% = Component([ad_array])
+        ap_% = Component([ap_array])
 
     Ability("Mystic Shot", "filler text", [Cost, Cooldown, Damage]
     """
