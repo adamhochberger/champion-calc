@@ -7,14 +7,13 @@ class Component:
         TODO: Further test print_comp_at_rank()
     '''
 
-    def __init__(self, value, scaling_value):
-      self.values = {"value": value, "scale": scaling_value}
+    def __init__(self, value_array):
+      self.values = {"value": value_array}
 
     def print_comp(self):
         print(self.values["value"], end=' ')
-        print(self.values["scaling_value"])
 
     def comp_at_rank(self, rank):
-        return (self.values["value"] + rank * self.values["scale"])
+        return (self.values["value"][rank-1])
         
       

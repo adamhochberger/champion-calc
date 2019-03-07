@@ -8,29 +8,24 @@ class Ability:
         "name": "Mystic Shot",
         "description": "filler",
         "rank": 1,
-        "max_rank": 1,
+        "max_rank": 5,
         "components": {
         "cost": {
-            "value": 28,
-            "scale": 3
+            "value": [28, 31, 34, 37, 40]
         },
         "cd": {
-            "value": 5.5,
-            "scale": -0.25
+            "value": [5.5, 5.25, 5.0, 4.75, 4.5]
         },
         "dmg": {
             "kind": "Physical",
             "base": {
-                "value": 15,
-                "scale": 25
+                "value": [15, 40, 65, 90, 115]
             },
             "ad_%": {
-                "value": 110,
-                "scale": 0
+                "value": [110, 110, 110, 110, 110]
             },
             "ap_%": {
-                "value": 30,
-                "scale": 0
+                "value": [30, 30, 30, 30, 30]
             },
             "hp_%": {}
         }
