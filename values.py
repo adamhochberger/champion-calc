@@ -1,5 +1,5 @@
 #!/usr/local/bin/env python
-
+from component import Component
 class Damage_Heal:
     '''
     Damage/heal object for the ability container
@@ -10,18 +10,26 @@ class Damage_Heal:
 
     # Init that takes in at minimum what kind of values it is processing (damage, healing, possible buffs) and then other indicators of damage
     # All variables other than kind are Component variables and represent a dictionary of information
-    def __init__ (self, kind, base={}, ad_percent={}, ap_percent={}, hp_percent={}):
-        self.values = {"kind": kind, "base": base, "ad_%": ad_percent, "ap_%": ap_percent, "hp_%": hp_percent}
+    def __init__ (self, kind, base= Component().scaling, ad_percent=Component().scaling, 
+        ap_percent= Component().scaling, hp_percent=Component().scaling):
+        
+        self.scaling = {"kind": kind, "base": base, "ad_%": ad_percent, "ap_%": ap_percent, "hp_%": hp_percent}
 
     # Print debug statement to ensure that values are expected (can be used with assert later)
     def print_comp(self):
-        print(str(self.values))
+        print(str(self.scaling))
     
     # Secondary print that represents values of container at a rank (uses flat_value + scale * rank)
     def print_comp_at_rank(self, rank):
-        for item in self.values:
-            print(item, end=' ')
-            print(item.value)
+        for key, value in self.scaling.items():
+            if key == "kind":
+                print(value)
+            else:
+                print(key, end=' ')
+                print(self.comp_at_rank(value, rank))
+
+    def comp_at_rank(self, dict, rank):
+        return (dict["value"][rank-1])
 
 class Buff_Debuff:
     '''Buff/debuff object for the ability container
