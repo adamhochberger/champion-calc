@@ -13,7 +13,9 @@ class Test_TestComponentInit:
         assert self.v.comp_at_rank(5) == 115
 
     def test_component_dict(self):
-        assert Damage_Heal("Physical", self.v.scaling).scaling == {"kind": "Physical", 
-        "base": self.v.scaling, "ad_%": {}, "ap_%": {}, "hp_%": {}}
+        assert Damage_Heal("Physical", self.v.scaling).scaling == (
+            {"kind": "Physical", "base": self.v.scaling, 
+            "ad_%": {"value": [0, 0, 0, 0, 0]}, "ap_%": {"value": [0, 0, 0, 0, 0]}, 
+            "hp_%": {"value": [0, 0, 0, 0, 0]}})
 
     

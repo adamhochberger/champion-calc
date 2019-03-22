@@ -13,6 +13,9 @@ class Component:
     def print_comp(self):
         for value in self.scaling["value"]:
             print(value, end=' ')
+    
+    def comp_at_rank(self, rank):
+        return self.scaling["value"][rank-1]
 
         
       
