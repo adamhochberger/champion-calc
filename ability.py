@@ -4,6 +4,7 @@ import json
 class Ability:
     'Base class for the ability container'
     ''' Structure for ability is of this form (subject to change based on components)
+    TODO: Change component format from an array of n ranks (subject to change based on character) to a base value + a scaling value
     {
         "name": "Mystic Shot",
         "description": "filler",

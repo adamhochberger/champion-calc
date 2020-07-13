@@ -4,7 +4,8 @@ class Component:
         
         Uses base dict structure to replicate pieces of an ability that are combined in the damage_heal class
         
-        TODO: Further test comp_at_rank()
+        TODO: Change value_array parameter to utilize a base + scaling value
+        TODO: Implement comp at rank value that will return the corresponding value of an ability at rank (X)
     '''
 
     def __init__(self, value_array=[0, 0, 0, 0, 0]):
