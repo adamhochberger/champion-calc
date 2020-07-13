@@ -10,17 +10,19 @@ print(recentVersion)
 
 # Secondary api call to the overall champion file that uses most recent version to pull information
 r = requests.get("http://ddragon.leagueoflegends.com/cdn/" + recentVersion + "/data/en_US/champion.json")
-data = json.loads(r.text)
+jData = json.loads(r.text)
 
 # Test statement to verify that champion names are being pulled properly
 #for key in list(data["data"]):
 champ = requests.get("http://ddragon.leagueoflegends.com/cdn/" + recentVersion + "/data/en_US/champion/" + "Azir" + ".json")
 
-# print(json.dumps(json.loads(champ.text), indent=2))
+print(jData.keys())
 
-for entry in list(data["data"]):
+for entry in list(jData["data"]):
     champ = requests.get("http://ddragon.leagueoflegends.com/cdn/" + recentVersion + "/data/en_US/champion/" + entry + ".json")
+
     print(entry)
+    print(jData.keys())
     print(json.loads(champ.text)["data"][entry]["spells"][0]["name"])
     print()
 
