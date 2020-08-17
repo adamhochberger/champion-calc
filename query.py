@@ -16,16 +16,14 @@ jData = json.loads(r.text)
 #for key in list(data["data"]):
 champ = requests.get("http://ddragon.leagueoflegends.com/cdn/" + recentVersion + "/data/en_US/champion/" + "Azir" + ".json")
 
-print(jData.keys())
+champ_q = open("q.txt", "w")
 
 for entry in list(jData["data"]):
     champ = requests.get("http://ddragon.leagueoflegends.com/cdn/" + recentVersion + "/data/en_US/champion/" + entry + ".json")
+    champ_q.write(entry + " ")
+    champ_q.write(json.loads(champ.text)["data"][entry]["spells"][0]["name"] + "\n")
 
-    print(entry)
-    print(jData.keys())
-    print(json.loads(champ.text)["data"][entry]["spells"][0]["name"])
-    print()
-
+champ_q.close() 
 
 # Names of all champions can be pulled using 
 # data = json.loads(r.text) 
