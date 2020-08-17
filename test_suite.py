@@ -3,9 +3,9 @@ import json
 import pytest
 from champion import Champion
 
-class Test_TestComponentInit:
-    v = Component([15, 40, 65, 90, 115])
-    # Overall testing for functionality of some classes
+champ = requests.get("http://ddragon.leagueoflegends.com/cdn/10.16.1/data/en_US/champion/" + "Annie" + ".json")
+annie = Champion("Annie", json.loads(champ.text)["data"]["Annie"]["stats"])
+
 stats= {
     "hp": 524,
     "hpperlevel": 88,
