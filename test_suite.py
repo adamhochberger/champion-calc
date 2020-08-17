@@ -1,19 +1,27 @@
-from component import Component
-from values import Damage_Heal
+import requests
+import json
 import pytest
+from champion import Champion
 
 class Test_TestComponentInit:
     v = Component([15, 40, 65, 90, 115])
     # Overall testing for functionality of some classes
+stats= {
+    "hp": 524,
+    "hpperlevel": 88,
+    "mp": 418,
+    "mpperlevel": 25,
+    "attackdamage": 50.41,
+    "attackdamageperlevel": 2.625
+}
 
-    def test_component_values(self):
-        assert self.v.scaling == {"value": [15, 40, 65, 90, 115]}
+def test_champion_hp():
+    assert annie.attributes["hp"] == (stats["hp"], stats["hpperlevel"])
 
-    def test_component_rank(self):
-        assert self.v.scaling["value"][4] == 115
+@pytest.mark.xfail
+def test_champion_mp():
+    assert annie.attributes["mp"] == (stats["mp"], stats["mpperlevel"])
 
-    def test_component_dict(self):
-        assert Damage_Heal("Physical", self.v.scaling).scaling == {"kind": "Physical", 
-        "base": self.v.scaling, "ad_%": Component().scaling, "ap_%": Component().scaling, "hp_%": Component().scaling}
+def test_champion_attackdamage_level():
+    assert annie.get_attr_at_level("attackdamage", 5) == stats["attackdamage"] + stats["attackdamageperlevel"] * 5
 
-    
