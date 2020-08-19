@@ -2,65 +2,15 @@
 import json
 
 class Ability:
+    'Endpoint for API will be here: http://cdn.merakianalytics.com/riot/lol/resources/{PATCH}/en-US/champions/{CHAMPION.json'
     'Base class for the ability container'
     ''' Structure for ability is of this form (subject to change based on components)
-    TODO: Change component format from an array of n ranks (subject to change based on character) to a base value + a scaling value
-    {
-        "name": "Mystic Shot",
-        "description": "filler",
-        "rank": 1,
-        "max_rank": 5,
-        "components": {
-        "cost": {
-            "value": [28, 31, 34, 37, 40]
-        },
-        "cd": {
-            "value": [5.5, 5.25, 5.0, 4.75, 4.5]
-        },
-        "dmg": {
-            "kind": "Physical",
-            "base": {
-                "value": [15, 40, 65, 90, 115]
-            },
-            "ad_%": {
-                "value": [110, 110, 110, 110, 110]
-            },
-            "ap_%": {
-                "value": [30, 30, 30, 30, 30]
-            },
-            "hp_%": {}
-        }
-    }
-}
+        name: str
+        description: str
+        image: img
 
+        effects - dictionary with arrays of minimum, maximum damage, health modifiers, damage types, etc
     
     '''
-    def __init__(self, name, description, rank, max_rank, components):
-        self.scaling = {"name": name, "description": description, "rank": rank, "max_rank": max_rank, "components": components}
-    
-
-
-    def print_ability(self):
-        print(json.dumps(self.scaling, sort_keys=False, indent=4))
-    
-    '''
-    def print_at_rank(self, value):
-        if value > 0 and value < self.max_rank:
-            for item in self.components:
-                item.print_comp_at_rank()     
-                '''     
-
-    """
-    Using example
-    For Ezreal Q: Mystic Shot
-    At max it would have
-    Cost ([mana_array])
-    Cooldown ([cd_array])
-    Damage (base_dmg, ad_%, ap_%)
-        base_dmg = Component([dmg_array])
-        ad_% = Component([ad_array])
-        ap_% = Component([ap_array])
-
-    Ability("Mystic Shot", "filler text", [Cost, Cooldown, Damage]
-    """
-      
+    def __init__(self):
+        print()
